@@ -1,0 +1,12 @@
+{% extends "wikiblog/base_home.html" %}
+
+{% load wikiblog_base_tags %}
+
+
+ {% block subcontent %}
+    {% if all_pages %}
+        {% include "wikiblog/display_pages.html" with all_pages=all_pages %}
+    {% else %}
+            <p>No Pages Exist Yet</p>
+    {% endif %}
+{% endblock subcontent %}

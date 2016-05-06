@@ -1,0 +1,34 @@
+{% extends "wikiblog/base.html" %}
+
+{% block extra_css %}
+{% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'wikiblog/homeSkeleton.css' %}" />
+{% endblock extra_css %}
+
+{% block content %}
+<div class="frontContent">
+ <div id="tagTitle">{% block tag_title %}#{{hashtag.tag}}{% endblock tag_title %}</div>
+<div class="homepage">
+    {% for hashtag in hashtags %}
+        <ul><a href="{% url 'wikiblog:hashtag_detail' hashtag.id %}">#{{hashtag.tag}}</a></ul>
+    {% endfor %}
+    
+        <div class="featuresBar">
+            <div class="subFeatures">
+            <p><a id="PageView" class="buttonGray" href="{% url 'wikiblog:hashtag_detail' hashtag.id %}">Page View</a><a class="buttonGray" href="{% url 'wikiblog:file_view' hashtag.id 1%}">File View</a><a class="createButton" id="create" href="{% url 'wikiblog:create_page' %}">Create Page</a></p> 
+            {% block pageSort %}
+            <div class="stayBlue">
+                <li><a href="{% url 'wikiblog:sort_pages' hashtag.id 'new' %}">new</a></li>
+                <li><a href="{% url 'wikiblog:sort_pages' hashtag.id 'comments' %}">comments</a></li>
+                <li><a href="{% url 'wikiblog:sort_pages' hashtag.id 'files' %}">files</a></li>
+            </div>
+            {% endblock pageSort %}
+            </div>
+           
+        </div>           
+
+    
+{% block subcontent %}{% endblock subcontent %}
+</div>
+</div>
+{% endblock content%}

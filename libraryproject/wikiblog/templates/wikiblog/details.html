@@ -1,0 +1,93 @@
+{% extends "wikiblog/base.html" %}
+{% block extra_css %}
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'wikiblog/details.css' %}" />
+{% endblock extra_css %}
+
+{% block content %}
+<div class="detail">
+    <div class="page">
+        <p>
+             <div id="displayInline">
+            <h1 id="detailTitle">{{title}}</h1>  
+            {% for hashtag in page.hashtag_set.all %}<a id="tagUnderTitle" href="{% url 'wikiblog:hashtag_detail' hashtag.id %}">#{{hashtag.tag}} </a>{% endfor %}
+            {% if show_edit_btn %}
+                <a class="editBtn btnGray" href="{% url 'wikiblog:edit_page' page.id %}">Edit page</a>
+            {% endif %}
+        </div>
+        <div class="userInDetail" id="displayInline">by <span id="pageUser">{{page.user}}</span>, &nbsp;{{page.date}}</div>
+        </p>
+     
+        <hr>
+        <!-- DJANGO NOTES: safe allows for html code to be rendered. linebreaks allows plaintext to newlines-->
+        <p>{{bodytext|safe|linebreaks}}</p>
+
+        
+
+        <div id="filesList">
+        {% if page.file_set.all %}
+            {% for file in page.file_set.all %}<li><a href='{{file.getlink}}'>{{file.name}}</a></li>{% endfor %}
+        {% endif %}
+        </div>
+       
+        <!--<a href="{% url 'wikiblog:delete_page' page.id %}">Delete page</a>-->
+     </div>
+
+    <div class="comments">
+        <form action="{% url 'wikiblog:add_page_comment' page.id%}" method="post">
+        {% csrf_token %}
+            <table>
+                <tr>
+                    <td>{{form.content}}</td>
+                    <td>{{form.content.label}}</td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Submit Comment" /></td>
+                </tr>
+            </table>
+        </form>
+
+    <!-- DJANGO NOTES: Display all top-level comments in page object-->
+    {% for comment in page.comment_set.all%}
+        <div class="commentBox">
+            <div id="username">{{comment.user_name}}</div> | <div id="date">{{comment.date}}</div>
+            <div id="comment">{{comment.content}}</div>
+        </div>
+
+        <div>
+            <!-- add response comment form-->
+            <details>
+                <summary>comment</summary>
+                <form action="{% url 'wikiblog:add_subcomment' comment.id page.id%}" method="post">
+                {% csrf_token %}
+                    <table>
+                        <tr>
+                            <td>{{form.user_name}}</td>
+                            <td>{{form.user_name.label}}</td>
+                        <tr>
+                            <td>{{form.content}}</td>
+                            <td>{{form.content.label}}</td>
+                        </tr>
+                        <tr>
+                            <td><input type="submit" value="Respond" /></td>
+                        </tr>
+                    </table>
+                </form>
+            </details>
+        </div>
+    
+        <div>
+        <!-- display nested comments recursively-->
+            <ul>
+                {%if comment.comment_set.all %}
+                    <ul>
+                            {%include "wikiblog/comment_recursive_template.html" with subcomment=comment %}
+                    </ul>
+                {%endif%} 
+            </ul>
+        </div>
+    {% endfor %} 
+    </div>
+</div>
+{% endblock content %}
+

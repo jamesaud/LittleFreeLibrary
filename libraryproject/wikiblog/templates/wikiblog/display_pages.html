@@ -1,0 +1,19 @@
+{% load staticfiles %}
+{% load wikiblog_base_tags %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'wikiblog/homeDisplay.css' %}" />
+
+{% for page in all_pages %}   
+     <div class="post">
+        <p>
+            <a class="title" href="{% url 'wikiblog:detail' page.id %}">{{page.title}}</a>
+            {% for hashtag in page.hashtag_set.all %}<a id="tagInTable" href="{% url 'wikiblog:hashtag_detail' hashtag.id %}">#{{hashtag.tag}} </a>{% endfor %}
+        </p>
+
+        <div class="subinfo">
+            <p><div id="displayInline">by <span id="pageUser">{{page.user}}</span>, &nbsp;{{page.date}}</div></p>
+            <p><div id="displayInline">{{page.file_set.all|length}} files &nbsp;|&nbsp; {% total_page_comments page.id %} comments</div></p>
+        </div>
+         <hr align="left" id="postHR">
+    </div>
+{% endfor %}

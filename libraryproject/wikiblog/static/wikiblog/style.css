@@ -1,0 +1,184 @@
+html, body {
+    margin: 0px;
+    background-color: whitesmoke;
+    font-family: 'Lato', sans-serif;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+#bodyWrapper{
+    min-height: 44em;
+}
+
+.middle{
+    margin-left: 8em;
+    background-color: inherit;
+    padding-left: 4em;
+    padding-top: 2.7em;
+}
+
+.myNav{
+    height: 2.3em;
+    line-height: 1.9em;
+    background-color: #2E2E2E;
+    min-width: 100%;
+    min-width: 88em;
+    font-size: 18;
+}
+
+.myNavWrapper{
+    margin-left: 9.1em;
+}
+
+.myNav ul{
+    display: inline;
+    list-style-type: none;
+}
+.myNav li{
+    float: left;
+    list-style-type: none;
+    width: 6em;
+    background-color: inherit;
+    text-align: center;
+    border-color: black;
+    border-style: solid;
+    border-width: 1.3px;
+    border-left: 0px;
+    border-top: 0px;
+    border-bottom: 0px;
+}
+
+.myNav li a {
+    color: lightgrey;
+    text-decoration: none;
+    display: block;
+    padding: .2em;
+  
+}
+
+.myNav li a:hover {
+    color: lightgoldenrodyellow;
+    text-decoration: none;
+}
+
+.vertNav{
+    position: absolute;
+    width: 9em;
+    padding-top:  3em;
+    background-color: black;
+    min-height: 73em;
+    font-size: 18;
+	}
+
+.vertNavWrapper{
+    background-color: black;
+    min-height: 100%;
+    width: 9em;
+    position: absolute;
+}
+
+.vertNav ul{
+    list-style-type: none;
+    padding-left: .85em;
+    padding-bottom: .2em;
+    padding-right: .3em;
+    
+    text-align: left;
+}
+
+.vertNav li{
+    word-break: break-all;
+    padding-bottom: 1.4em;
+}
+
+.vertNav ul a:hover{
+    color: deepskyblue;
+	}
+
+.vertNav a:link{
+	color: white;
+	text-decoration: none;
+	}
+
+.vertNav a:visited {
+	color: white;
+    text-decoration: none;
+}
+
+
+.indent{
+    margin-left: 30px;
+}
+
+
+#editBodyTag{
+    font-weight: bold;
+}
+
+.formDisplay td{
+    padding-right: 2em;
+    font-weight: bold;
+}
+
+.btnGray {
+  -webkit-border-radius: 9;
+  -moz-border-radius: 9;
+  border-radius: 9px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 11px;
+  background: #52585c;
+  padding: 6px 20px 6px 20px;
+  text-decoration: none;
+}
+
+.btnGray:hover {
+  background: #3cb0fd;
+  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+  text-decoration: none;
+}
+
+#backBtn{
+    margin-left:1em;
+    padding-left:20px;
+}
+
+#edit_title{
+    color: inherit;
+    font-size: 28;
+}
+
+.inline{
+    display: inline;
+}
+
+.tabbed{
+    margin-right: 1em;
+}
+
+
+.delBtn{
+    margin-left: 20em;
+}
+
+#editTitle{
+    display: inline;
+}
+
+#hashtagPageLength{
+    color: beige;
+    font-size: 8px;
+    line-height: .4em;
+}
+
+#pageUser{
+    color: #1491FF;
+}
+
+.displayInline{
+    display: inline;
+}

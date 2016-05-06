@@ -1,0 +1,26 @@
+{% extends "wikiblog/base.html" %}
+
+{% block extra_css %}
+{% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'wikiblog/about.css' %}" />
+{% endblock extra_css %}
+
+{% block content %}
+<div class="aboutPage">
+    <h1>Welcome to the Social Experiment</h1>
+    <hr>
+    <div id="mid">
+        <h3>There are only three rules:</h3>
+    
+        <li>Everything here is anonymous. You are free to share without facing consequences.</li>
+        <li>The content exists locally. You must be within the wifi signal to access it.</li>
+        <li>You decide the rules.</li>
+    </div>
+    
+    <div id="star">    
+            
+        <p>*Session cookies (cookies that delete themselves when you close the browser) are enabled to minimize trolling. You can browse the site without cookies, but cannot create content.</p>
+    </div>
+    
+</div>
+{% endblock content %}

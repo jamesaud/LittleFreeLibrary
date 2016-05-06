@@ -1,0 +1,3 @@
+{% for hashtag in hashtags %}
+        <li><a href="{% url 'wikiblog:hashtag_detail' hashtag.id %}">#{{hashtag.tag}} <span id="hashtagPageLength">({{ hashtag.page.all|length}})</span></a></li>
+{% endfor %}

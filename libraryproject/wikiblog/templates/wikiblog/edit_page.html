@@ -1,0 +1,46 @@
+{% extends "wikiblog/base.html" %}
+{% load staticfiles %}
+{% block content %}
+
+<div class="paddedcontent">
+  <p>
+    <h2 id="editTitle"><i>Editing: </i><a id="edit_title" href="{% url 'wikiblog:detail' page.id %}"> {{page}}</a></h2>
+    <a class="delBtn btnGray" href="{% url 'wikiblog:delete_page' page.id %}">Delete Page</a>
+  </p>    
+<form action="{% url 'wikiblog:submit_edit' page.id %}" method="post" enctype ="multipart/form-data" >
+{% csrf_token %}
+    <table class="formDisplay">
+        <tr>
+            <td>{{form.title.label}}</td>
+            <td>{{form3.tag.label}}</td>
+        </tr>
+        <tr>
+            <td>{{form.title}}</td>
+            <td>{{form3.tag}}</td>
+        </tr>
+    </table>        
+    <p id="editBodyTag">{{form.bodytext.label}}</p>
+    <p>{{form.bodytext}}</p>
+    
+    <input type="file" name="files" multiple/>
+    
+<hr>
+    
+{% if page.file_set.all %}
+    <table>
+        <tr><td>File</td><td>Delete</td></tr>
+        {% for file in page.file_set.all %} 
+            <tr>
+                <td><a href='{{file.getlink}}'>{{file.name}}</a></td>
+                <td><input type="checkbox" value="{{file.id}}" name="choices"></td>
+            </tr>   
+        {% endfor %}
+    </table>
+{% endif %}
+    
+<p>
+    <input type="submit" value="Save Changes" />
+</p>
+</form>
+</div>
+{% endblock content %}

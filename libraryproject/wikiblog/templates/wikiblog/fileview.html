@@ -1,0 +1,50 @@
+{% extends "wikiblog/base_home.html" %}
+{% load wikiblog_base_tags %}
+{% load staticfiles %}
+
+{% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'wikiblog/homeSkeleton.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'wikiblog/fileView.css' %}" />
+{% endblock extra_css %}
+
+{% block tag_title %}#{{hashtag.tag}}{% endblock tag_title %}
+
+{% block subcontent %}
+    {% block pageSort %} {% endblock pageSort %}
+    {% if all_files %}
+	   <table class="tableDisplay">
+           <th id="fileTable">File</th>
+           <th id="pagetable">Page</th>
+           <th id="commentsTable">Comments</th>
+           <th>Uploaded</th>
+            {% for file in all_files %}
+                <tr>
+                    <td><a href="{{file.getlink}}">{{file.name}}</a></td>
+                    <td><a class="noDec" href="{% url 'wikiblog:detail' file.page.id %}">{{ file.page.title }}</a></td>
+                    <td><a class="noDec" href="{% url 'wikiblog:detail' file.page.id %}">{% total_page_comments file.page.id %}</a></td>
+                    <td><a class="noDec" href="{% url 'wikiblog:detail' file.page.id %}">{{ file.date }}</a></td>
+                </tr>
+            {% endfor %}
+	   </table>
+
+    {% else %}
+    <p>No Files Exist Yet</p>
+
+    {% endif %}
+    <hr>
+    <br>
+    <div class="pageButtons">
+        {% if display_next_button %}
+            {% with var=fileview_display_id|add:"2" %}
+                <li><a id="nextPage" class="nextButton" href = "{% url 'wikiblog:file_view' hashtag.id var %}">Next Page</a></li>
+            {% endwith %}
+        {% endif %}
+
+        {% if display_back_button %}
+            <li><a id="previousPage" class="nextButton" href = "{% url 'wikiblog:file_view' hashtag.id fileview_display_id %}">Previous Page</a></li>
+        {% endif %}
+    </div>
+    
+
+{% endblock subcontent %}
+

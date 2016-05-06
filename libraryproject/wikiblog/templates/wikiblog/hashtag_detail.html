@@ -1,0 +1,22 @@
+{% extends "wikiblog/base_home.html" %}
+
+{% block tag_title %}#{{hashtag.tag}}{% endblock tag_title %}
+
+{% block subcontent %}
+<div class="HashtagView">
+    {% include "wikiblog/display_pages.html" with all_pages=hashtag_pages %}
+        <div class="pageButtons">
+
+            {% if hashtag_pages|length == 10 %}
+                {% with var=display_num|add:"2" %}
+                    <li><a id="nextPage" class="nextButton" href = "{% url 'wikiblog:next_display' hashtag.id var %}">Next Page</a></li>
+                {% endwith%}
+            {% endif %}
+
+            {% if display_num > 0 %}
+                <li><a id="previousPage" class="nextButton" href = "{% url 'wikiblog:next_display' hashtag.id display_num %}">Previous Page</a></li>
+            {% endif %}
+        </div>
+</div>
+    
+{% endblock subcontent %}

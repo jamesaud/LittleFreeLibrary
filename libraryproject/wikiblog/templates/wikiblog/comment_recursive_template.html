@@ -1,0 +1,33 @@
+
+{% for comment in subcomment.comment_set.all %}
+
+    <!--RECURSION FOR SUBCOMMENTS-->
+    <div class="commentBox">
+            <div id="username">{{comment.user_name}}</div> | <div id="date">{{comment.date}}</div>
+            <div id="comment">{{comment.content}}</div>
+    </div>
+
+    <div>
+        <details>
+        <summary>comment</summary>
+        <!-- add response comment -->
+        <form action="{% url 'wikiblog:add_subcomment' comment.id page.id%}" method="post">
+        {% csrf_token %}
+            <table>
+                <tr>
+                    <td>{{form.content}}</td>
+                    <td>{{form.content.label}}</td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Respond" /></td>
+                </tr>
+            </table>
+        </form>
+        </details>
+    </div>
+
+    {%if comment.comment_set.all %}
+        <ul>{%include "wikiblog/comment_recursive_template.html" with subcomment=comment %}</ul>
+    {%endif%} 
+
+{% endfor %}

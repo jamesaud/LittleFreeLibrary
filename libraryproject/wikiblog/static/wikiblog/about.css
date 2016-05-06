@@ -1,0 +1,22 @@
+.aboutPage{
+    width: 60em;
+    padding-left: 3em;
+    padding-right: 3em;
+    padding-top:2em;
+    padding-bottom:2em;
+    background-color: white;
+}
+
+.aboutPage li{
+    line-height: 2em;
+    color: #E55A50;
+}
+
+#star{
+    font-size: 10;
+    margin-top: 10em;
+}
+
+#mid{
+    padding-top: 1em;
+}

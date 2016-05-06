@@ -1,0 +1,105 @@
+
+.page{
+    margin-right: 2em;
+    margin-bottom: 1em;
+    margin-left: 3em;
+    padding: 1em;
+    border-bottom: thick solid #241F21;
+    background-color: white;
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    max-width: 60em;
+}
+
+.comments{
+    padding-right: 3em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    padding-left: 3em;
+    background-color: white;
+    background-size: 100%;
+    width: 80%%;
+    height: cover;
+    
+    border-radius: 10px 10px 10px 10px;
+    -moz-border-radius: 10px 10px 10px 10px;
+    -webkit-border-radius: 10px 10px 10px 10px;
+    border-top: 3px solid #000000;
+}
+
+.commentBox{
+    border: 2px solid rgba(0,0,0,0.1);
+	padding: 1px 6px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	outline: 0;
+    width: 400px;
+    line-height: 1.3em;
+}
+
+.detail{
+    margin-left: -3em;
+}
+
+
+#username{
+    font-size: 13;
+    color: indianred;
+    display: inline;
+}
+
+#comment{
+    font-size: 15;
+}
+
+#date{
+    font-size: 10;
+    display: inline;
+}
+
+#tagUnderTitle{
+    font-size: 12;
+    color: #E58800; 
+    padding-left: .4em;
+    text-decoration: none; 
+    display: inline;
+}
+
+#detailTitle{
+    display: inline;
+    padding-right: 3em;
+}
+
+summary{
+    font-size: 12;
+}
+
+.editBtn{
+    float:right;
+    margin-right: 5em;
+    margin-top: .5em;
+    display: inline;
+}
+
+
+#filesList{
+    line-height:2em;
+    margin-right: 2em;
+}
+
+#filesList a{
+    padding-right: 2em;
+}
+
+#filesList li{
+    list-style-type: none;
+    background-color: inherit;
+    display: inline-block;
+}
+
+.userInDetail{
+  margin-left: 1em;
+  margin-top: .4em;
+}

@@ -1,0 +1,59 @@
+{% load staticfiles %}
+{% load wikiblog_base_tags %}
+    <link rel="stylesheet" type="text/css" href="{% static 'wikiblog/style.css' %}" />
+<!--    <link rel="stylesheet" type="text/css" href="{% static 'wikiblog/bootstrap/css/bootstrap.min.css' %}" /> -->
+{% block extra_css %}{% endblock extra_css %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <title>LibraryProject</title>
+</head>
+
+<body>
+    <div id="bodyWrapper">
+    <!--Apply update cookies-->
+    {% update_user_cookies request%}
+    
+	{% block navbar %}
+        <nav class="myNav">
+            <div class="myNavWrapper">
+                <ul>
+                    <li><a href="{% url 'wikiblog:homepage' %}">Homepage</a></li>
+                    <li><a href="{% url 'wikiblog:about' %}">....</a></li>
+                </ul>
+            </div>
+        </nav>
+    {% endblock navbar%}
+    
+    {% block vertnavbar %}
+        <div class="vertNavWrapper">
+            <div class="vertNav">
+                    <!--
+                    <form name=tag_sort_form action="{% url 'wikiblog:sort_tags' %}" method="get">
+                        {% csrf_token %}
+                          <p>
+                              
+                          <select name=sort_choice onChange="tag_sort_form.submit();">
+                              <option value="" SELECTED>sort by</option>
+                              <option value="articles">articles</option>
+                              <option value="name">name</option>
+                          </select>
+                          </p>
+                    </form>-->
+
+                    <!-- Need to ajax for passing the sort_choice to get_hashtags, or something -->
+                    
+                    <div class="sidebarTags"><ul>{% get_hashtags %}</ul></div>
+                
+                </div>
+            </div>
+    {% endblock vertnavbar %}
+	
+    
+	<div class="middle">
+        {% block content %}{% endblock %}
+    </div>
+   </div>
+</body>
+</html>

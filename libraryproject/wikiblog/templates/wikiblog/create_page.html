@@ -1,0 +1,32 @@
+{% extends "wikiblog/base_home.html" %}
+{% load staticfiles %}
+
+{% block content %}
+<div class="createPage">
+<h2><i>Create Page:</i></h2>
+
+<form action="{% url 'wikiblog:create_page' %}" method="post"  enctype ="multipart/form-data">
+    {% csrf_token %}
+   <table class="formDisplay">
+        <tr>
+            <td>{{form.title.label}}</td>
+            <td>{{form3.tag.label}}</td>
+        </tr>
+        <tr>
+            <td>{{form.title}}</td>
+            <td>{{form3.tag}}</td>
+        </tr>
+    </table>        
+    <p id="editBodyTag">{{form.bodytext.label}}</p>
+    <p>{{form.bodytext}}</p>
+    <p>{{form2.data}}</p>
+    
+    <input type="file" name="files" multiple/>
+    
+    <hr>
+<p>
+    <input type="submit" value="Submit Page" />
+</p>
+</form>
+</div>
+{% endblock content %}
