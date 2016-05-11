@@ -1,4 +1,4 @@
 # LittleFreeLibrary
 
 Description and tutorial:
-https://jamesaudretsch.wordpress.com/2016/05/01/littlefreelibrary/
+https://jamesaudretsch.wordpress.com/little-free-library-project-part-0/
